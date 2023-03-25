@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title> Modèle Programmation Javascript</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+    </head>    
+    <body>
+        <div class="container-fluid">	
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <canvas id="canvas" class="border border-primary"></canvas>
+                </div>
+            </div>
+        </div>
+        <div style="display:none">
+            <img id='background' alt='background' src="assets/background.png">
+            <img id='ecranTitre' alt='ecranTitre' src="assets/ecranTitre.png">
+            <img id="projectile" alt='tir' src = "assets/plane/tir.png">
+            <img id="boss" alt='boss' src = "assets/boss/boss.png">
+            <img id="soin" alt='soin' src = "assets/items/kitSoin.png">
+            <img id="coeur" alt='coeur' src = "assets/items/coeur.png">
+            <img id="coeurLost" alt='coeurLost' src = "assets/items/coeurLost.png">
+            <img id='ennemi1' alt='ennemi1' src="assets/obstacle/ennemi1.png">
+            <img id='explosion0' alt='explosion0' src="assets/obstacle/explosion0.png">
+            <img id='explosion1' alt='explosion1' src="assets/obstacle/explosion1.png">
+            <img id='explosion2' alt='explosion2' src="assets/obstacle/explosion2.png">
+            <img id='explosion3' alt='explosion3' src="assets/obstacle/explosion3.png">
+            <img id='explosion4' alt='explosion4' src="assets/obstacle/explosion4.png">
+            <img id='explosion5' alt='explosion5' src="assets/obstacle/explosion5.png">
+            <img id='explosion6' alt='explosion6' src="assets/obstacle/explosion6.png">
+            <img id='ennemi1Behind' alt='ennemi1Behind' src="assets/obstacle/ennemi1Behind.png">
+            <img id='explosion0Behind' alt='explosion0Behind' src="assets/obstacle/explosion0Behind.png">
+            <img id='explosion1Behind' alt='explosion1Behind' src="assets/obstacle/explosion1Behind.png">
+            <img id='explosion2Behind' alt='explosion2Behind' src="assets/obstacle/explosion2Behind.png">
+            <img id='explosion3Behind' alt='explosion3Behind' src="assets/obstacle/explosion3Behind.png">
+            <img id='explosion4Behind' alt='explosion4Behind' src="assets/obstacle/explosion4Behind.png">
+            <img id='explosion5Behind' alt='explosion5Behind' src="assets/obstacle/explosion5Behind.png">
+            <img id='explosion6Behind' alt='explosion6Behind' src="assets/obstacle/explosion6Behind.png">
+            <img id='tree0' alt='arbre' src="assets/decor/tree1.png">
+            <img id='tree1' alt='arbre' src="assets/decor/tree2.png">
+            <img id='tree2' alt='arbre' src="assets/decor/tree3.png">
+            <img id='tree3' alt='arbre' src="assets/decor/tree4.png">
+            <img id='tree4' alt='arbre' src="assets/decor/tree5.png">
+            <img id='plane0' alt='plane' src="assets/plane/avion0.png">
+            <img id='plane1' alt='plane' src="assets/plane/avion1.png">
+            <img id='plane10' alt='plane' src="assets/plane/avion10.png">
+            <img id='plane11' alt='plane' src="assets/plane/avion11.png">
+            <img id='plane20' alt='plane' src="assets/plane/avion20.png">
+            <img id='plane21' alt='plane' src="assets/plane/avion21.png">
+            <img id='plane30' alt='plane' src="assets/plane/avion30.png">
+            <img id='plane31' alt='plane' src="assets/plane/avion31.png">
+            <img id='plane40' alt='plane' src="assets/plane/avion40.png">
+            <img id='plane41' alt='plane' src="assets/plane/avion41.png">
+            <img id='plane50' alt='plane' src="assets/plane/avion50.png">
+            <img id='plane51' alt='plane' src="assets/plane/avion51.png">
+            <img id='plane60' alt='plane' src="assets/plane/avion60.png">
+            <img id='plane61' alt='plane' src="assets/plane/avion61.png">
+            <img id='plane-10' alt='plane' src="assets/plane/avion-10.png">
+            <img id='plane-11' alt='plane' src="assets/plane/avion-11.png">
+            <img id='plane-20' alt='plane' src="assets/plane/avion-20.png">
+            <img id='plane-21' alt='plane' src="assets/plane/avion-21.png">
+            <img id='plane-30' alt='plane' src="assets/plane/avion-30.png">
+            <img id='plane-31' alt='plane' src="assets/plane/avion-31.png">
+            <img id='plane-40' alt='plane' src="assets/plane/avion-40.png">
+            <img id='plane-41' alt='plane' src="assets/plane/avion-41.png">
+            <img id='plane-50' alt='plane' src="assets/plane/avion-50.png">
+            <img id='plane-51' alt='plane' src="assets/plane/avion-51.png">
+            <img id='plane-60' alt='plane' src="assets/plane/avion-60.png">
+            <img id='plane-61' alt='plane' src="assets/plane/avion-61.png">
+            <img id='gameOver' alt='endgame' src="assets/gameOver.png">
+            <img id='victory' alt='endgame' src="assets/victory.png">
+        </div>
+    
+        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> 
+    <script src="js/classNoeud.js"></script>
+    <script src="js/classFile.js"></script>
+    <script src="js/classListe.js"></script>
+    <script src="js/formes.js"> </script>
+    <script src="js/classProjectile.js"> </script>
+    <script src="js/classItem.js"> </script>
+    <script src="js/classBoss.js"> </script>
+    <script src="js/classAvion.js"> </script>
+    <script src="js/classObstacle.js"> </script>
+    <script src="js/classArbre.js"> </script>
+    <script src="js/classForet.js"> </script>
+    <script src="js/classGame.js"> </script>
+    <script src="js/script.js"> </script>
+    </body>
+</html>
