@@ -6,20 +6,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title> Modèle Programmation Javascript</title>
+        <title> SkyFighters Jules</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
     </head>    
-    <body>
+    <body class="container">
+        <h1>SkyFighters</h1>
+        <hr>
+        <p>Fully Designed and Coded with love By Jules MEURIN</p>
         <div class="container-fluid">	
             <div class="row justify-content-center">
                 <div class="col-12">
                     <canvas id="canvas" class="border border-primary"></canvas>
+                    <center>
+                        <span><img id='spacecontrol' alt='dessin bar espace' src="assets/spaceBar.png" style="width:100px"> Espace pour Tirer</span>
+                        <span><img id='arrowkeys' alt='dessin flêches' src="assets/mouv.png" style="width:60px"> Fléches pour se déplacer</span>
+                    </center>
                 </div>
             </div>
         </div>
         <div style="display:none">
             <img id='background' alt='background' src="assets/background.png">
+            <img id='startingScreen' alt='startingScreen' src="assets/DALL·E 2023-03-25 14.07.16 - 90's blue warplane with propeller game illustration.png">
+            <img id='reset' alt='reset' src="assets/resetButton.png">
             <img id='ecranTitre' alt='ecranTitre' src="assets/ecranTitre.png">
             <img id="projectile" alt='tir' src = "assets/plane/tir.png">
             <img id="boss" alt='boss' src = "assets/boss/boss.png">

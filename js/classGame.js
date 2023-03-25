@@ -7,8 +7,9 @@ class Game {
         this.background =  document.getElementById("background");
         this.imgCoeur = document.getElementById("coeur");
         this.imgCoeurLost = document.getElementById("coeurLost");
+        this.startingScreen = document.getElementById("startingScreen")
         this.avion = new Avion(this);
-        this.compteur =0;
+        this.compteur =1;
         this.listEnnemi = new Liste();
         this.listItem = new Liste();
         this.keys = {};
@@ -18,7 +19,13 @@ class Game {
         this.win = false;
         this.compteurInv=0;
         this.boss = new Boss(this);
-        this.compteurGameOver = 99; // nombre d'images pour pouvoir relanbcer une partie après avoir finis une partie
+        this.compteurGameOver = 66; // nombre d'images pour pouvoir relanbcer une partie après avoir finis une partie
+
+        var image = new Image();
+        image.src = document.getElementById("startingScreen").src;
+        image.onload = function() {
+            ctx.drawImage(image, 0, 0, largeur, hauteur);
+        };
 
 
         this.debug = false; //affiche différents élements de programmation
@@ -94,14 +101,33 @@ class Game {
         }else{
             if(this.compteurGameOver ==0){
                 if(this.keys["Space"]){
-                    Object.assign(this, new Game(this.canvas, this.largeur, this.hauteur))
+                    this.restart()
                 }
             }else{
                 this.compteurGameOver -= 1;
-                console.log(this.compteurGameOver)
+                if(this.compteurGameOver == 0){
+                    ctx.drawImage(document.getElementById("reset"),100,430, 600,100);
+                }
             }
         }
     }
+
+    restart(){
+        this.listEnnemi = new Liste();
+        this.listItem = new Liste();
+        this.boss = new Boss(this);
+        this.compteur=1;
+        this.score = 0;
+        this.lives = 3;
+        this.gameOver = false;
+        this.win = false;
+        this.compteurInv=0;
+        this.compteurGameOver = 66; // nombre d'images pour pouvoir relanbcer une partie après avoir finis une partie
+
+        ctx = canvas.getContext('2d');
+        ctx.drawImage(document.getElementById("startingScreen"),0,0, this.largeur, this.hauteur);
+    }
+
     LossHp(){
         if(this.compteurInv<0){
             if(!this.debug){
