@@ -16,12 +16,25 @@
         <p>Fully Designed and Coded with love By Jules MEURIN</p>
         <div class="container-fluid">	
             <div class="row justify-content-center">
-                <div class="col-12">
+                <div class="col-12" id="divName">
+                    <center>
+                    <h2>Comment vous appelez vous Capitaine ?</h2>
+                        <input class='text' name="inputName" id="inputName" maxlength="12">
+                        <button id="btnName" name ="btnName" onClick="launch()">Valider</button>
+                    </center>
+                </div>
+                <div class="col-12" style="display:none" id="divJeu">
                     <canvas id="canvas" class="border border-primary"></canvas>
                     <center>
                         <span><img id='spacecontrol' alt='dessin bar espace' src="assets/spaceBar.png" style="width:100px"> Espace pour Tirer</span>
                         <span><img id='arrowkeys' alt='dessin flêches' src="assets/mouv.png" style="width:60px"> Fléches pour se déplacer</span>
                     </center>
+                </div>
+                <div class="col-12">
+                    <h2>Meilleurs temps :</h2>
+                    <hr>
+                    <ul id="listScores">
+                    </ul>
                 </div>
             </div>
         </div>

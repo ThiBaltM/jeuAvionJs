@@ -51,6 +51,8 @@ function getRandomInt(max) {
             this.game.gameOver = true;
             this.game.win = true;
             ctx.drawImage(document.getElementById("victory"),200,200,400,200);
+
+            this.game.saveScore()
         }
     }
 

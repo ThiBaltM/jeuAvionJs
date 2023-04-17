@@ -1,6 +1,7 @@
 class Game {
-    constructor (canvas, largeur, hauteur) {
+    constructor (canvas, largeur, hauteur, name) {
         this.canvas = canvas;
+        this.name = name;
         this.largeur = largeur;
         this.hauteur = hauteur;
         this.decor = new Foret(this);
@@ -20,6 +21,7 @@ class Game {
         this.compteurInv=0;
         this.boss = new Boss(this);
         this.compteurGameOver = 66; // nombre d'images pour pouvoir relanbcer une partie après avoir finis une partie
+        this.score = 0;
 
         var image = new Image();
         image.src = document.getElementById("startingScreen").src;
@@ -37,8 +39,8 @@ class Game {
             //ajouter des ennemis
             if(this.compteur%20 == 0){
                 this.listEnnemi.Push(new Ennemi(this));
-                this.score += 1;
             }
+            this.score += 1/30;
             //afficher background
             ctx = canvas.getContext('2d');
             ctx.drawImage(this.background,0,0);
@@ -57,6 +59,11 @@ class Game {
             this.listEnnemi.Reverse().forEach(ennemi => {
                 ennemi.Update(ctx, true);
             });
+
+            //afficher score
+            ctx.fillStyle = "#1f1f1f"
+            ctx.font = '32px serif';
+            ctx.fillText('time :'+(Math.round(this.score*100)/100).toString(), 10, 40);
 
             //afficher vie du joueur
             for(let k=1; k<4;k++){
@@ -121,6 +128,7 @@ class Game {
         this.lives = 3;
         this.gameOver = false;
         this.win = false;
+        this.score=0;
         this.compteurInv=0;
         this.compteurGameOver = 66; // nombre d'images pour pouvoir relanbcer une partie après avoir finis une partie
 
@@ -141,5 +149,21 @@ class Game {
             }
             this.compteurInv = 90;
         }
+    }
+
+    saveScore(){
+        const url = "http://s4-8029.nuage-peda.fr/apiJeuAvion/public/api/scores";
+        const data = {
+          name: this.name,
+          time: this.score
+        };
+        
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        })
     }
 }
